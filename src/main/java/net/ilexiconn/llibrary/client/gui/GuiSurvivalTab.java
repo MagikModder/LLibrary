@@ -1,7 +1,5 @@
 package net.ilexiconn.llibrary.client.gui;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.ilexiconn.llibrary.survivaltab.SurvivalTab;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -12,6 +10,8 @@ import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ import java.util.List;
 public class GuiSurvivalTab extends GuiButton
 {
     private ResourceLocation texture = new ResourceLocation("textures/gui/container/creative_inventory/tabs.png");
-    private RenderItem renderItem = new RenderItem();
+    private RenderItem renderItem = new RenderItem(Minecraft.getMinecraft().getTextureManager(), Minecraft.getMinecraft().modelManager);
     private SurvivalTab survivalTabContainer;
     private ItemStack stackIcon;
 
@@ -57,8 +57,8 @@ public class GuiSurvivalTab extends GuiButton
             renderItem.zLevel = 100f;
             GL11.glEnable(2896);
             GL11.glEnable(32826);
-            renderItem.renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stackIcon, xPosition + 6, yPosition + 8);
-            renderItem.renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, stackIcon, xPosition + 6, yPosition + 8);
+            renderItem.renderItemAndEffectIntoGUI(stackIcon, xPosition + 6, yPosition + 8);
+            renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, stackIcon, xPosition + 6, yPosition + 8, "");
             GL11.glDisable(2896);
             GL11.glEnable(3042);
             renderItem.zLevel = 0f;
@@ -88,7 +88,7 @@ public class GuiSurvivalTab extends GuiButton
 
     public void drawHoveringText(String text, int mouseX, int mouseY)
     {
-        drawHoveringText(Arrays.asList(text), mouseX, mouseY, Minecraft.getMinecraft().fontRenderer);
+        drawHoveringText(Arrays.asList(text), mouseX, mouseY, Minecraft.getMinecraft().fontRendererObj);
     }
 
     public void drawHoveringText(List text, int mouseX, int mouseY, FontRenderer font)
@@ -146,7 +146,7 @@ public class GuiSurvivalTab extends GuiButton
         }
     }
 
-    public void func_146113_a(SoundHandler soundHandler)
+    public void playPressSound(SoundHandler soundHandler)
     {
 
     }

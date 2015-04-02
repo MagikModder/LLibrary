@@ -1,16 +1,15 @@
 package test.proxy;
 
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.ilexiconn.llibrary.client.render.RenderHelper;
-import test.EntityTest;
-import test.render.RenderEntityTest;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import test.render.TestModelExtension;
 
+@SideOnly(Side.CLIENT)
 public class ClientProxy extends ServerProxy
 {
     public void init()
     {
-        RenderingRegistry.registerEntityRenderingHandler(EntityTest.class, new RenderEntityTest());
         RenderHelper.registerModelExtension(new TestModelExtension());
     }
 }

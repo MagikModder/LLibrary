@@ -1,14 +1,16 @@
 package net.ilexiconn.llibrary;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.ilexiconn.llibrary.command.CommandLLibrary;
 import net.ilexiconn.llibrary.config.ConfigHelper;
 import net.ilexiconn.llibrary.config.LLibraryConfigHandler;
 import net.ilexiconn.llibrary.proxy.ServerProxy;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 @Mod(modid = "llibrary", name = "LLibrary", version = "${version}", guiFactory = "net.ilexiconn.llibrary.config.LLibraryConfigFactory")
 public class LLibrary
@@ -18,10 +20,12 @@ public class LLibrary
 
     @SidedProxy(serverSide = "net.ilexiconn.llibrary.proxy.ServerProxy", clientSide = "net.ilexiconn.llibrary.proxy.ClientProxy")
     public static ServerProxy proxy;
+    public static SimpleNetworkWrapper networkWrapper;
 
     @Mod.EventHandler
     private void preInit(FMLPreInitializationEvent event)
     {
+        networkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel("llibrary");
         ConfigHelper.registerConfigHandler("llibrary", event.getSuggestedConfigurationFile(), new LLibraryConfigHandler());
         proxy.preInit();
     }

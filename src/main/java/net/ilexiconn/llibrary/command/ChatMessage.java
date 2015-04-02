@@ -1,6 +1,6 @@
 package net.ilexiconn.llibrary.command;
 
-import net.ilexiconn.llibrary.color.EnumChatColor;
+import net.ilexiconn.llibrary.color.EnumJsonChatColor;
 
 /**
  * @author FiskFille
@@ -8,9 +8,9 @@ import net.ilexiconn.llibrary.color.EnumChatColor;
 public class ChatMessage
 {
     public String message;
-    public EnumChatColor color;
+    public EnumJsonChatColor color;
 
-    public ChatMessage(String m, EnumChatColor c)
+    public ChatMessage(String m, EnumJsonChatColor c)
     {
         message = m;
         color = c;

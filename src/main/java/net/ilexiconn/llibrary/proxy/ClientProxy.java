@@ -1,17 +1,16 @@
 package net.ilexiconn.llibrary.proxy;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.ilexiconn.llibrary.client.ClientEventHandler;
 import net.ilexiconn.llibrary.client.gui.GuiChangelog;
 import net.ilexiconn.llibrary.client.render.entity.RenderLLibraryPlayer;
 import net.ilexiconn.llibrary.update.ChangelogHandler;
 import net.ilexiconn.llibrary.update.ModUpdateContainer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends ServerProxy
@@ -28,7 +27,7 @@ public class ClientProxy extends ServerProxy
     {
         super.postInit();
 
-        RenderManager.instance.entityRenderMap.put(EntityPlayer.class, new RenderLLibraryPlayer());
+        Minecraft.getMinecraft().getRenderManager().entityRenderMap.put(EntityPlayer.class, new RenderLLibraryPlayer());
     }
 
     public void openChangelogGui(ModUpdateContainer mod, String version)

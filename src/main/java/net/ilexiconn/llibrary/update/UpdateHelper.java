@@ -1,7 +1,7 @@
 package net.ilexiconn.llibrary.update;
 
 import com.google.common.collect.Lists;
-import cpw.mods.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod;
 
 import java.net.URL;
 import java.util.ArrayList;

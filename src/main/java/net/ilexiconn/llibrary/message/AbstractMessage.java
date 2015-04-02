@@ -1,23 +1,17 @@
 package net.ilexiconn.llibrary.message;
 
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.network.simpleimpl.IMessage;
-import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
-import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public abstract class AbstractMessage<REQ extends AbstractMessage> implements IMessage, IMessageHandler<REQ, IMessage>
 {
     public IMessage onMessage(REQ message, MessageContext ctx)
     {
-        if (ctx.side.isClient())
-        {
-            handleClientMessage(message, FMLClientHandler.instance().getClientPlayerEntity());
-        }
-        else
-        {
-            handleServerMessage(message, ctx.getServerHandler().playerEntity);
-        }
+        if (ctx.side.isClient()) handleClientMessage(message, FMLClientHandler.instance().getClientPlayerEntity());
+        else handleServerMessage(message, ctx.getServerHandler().playerEntity);
 
         return null;
     }

@@ -1,9 +1,9 @@
 package net.ilexiconn.llibrary.config;
 
-import cpw.mods.fml.client.IModGuiFactory;
 import net.ilexiconn.llibrary.client.gui.GuiLLibraryConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraftforge.fml.client.IModGuiFactory;
 
 import java.util.Set;
 

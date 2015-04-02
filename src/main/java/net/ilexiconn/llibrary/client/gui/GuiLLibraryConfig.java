@@ -1,7 +1,5 @@
 package net.ilexiconn.llibrary.client.gui;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.ilexiconn.llibrary.config.ConfigHelper;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,6 +7,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.io.IOException;
 
 @SideOnly(Side.CLIENT)
 public class GuiLLibraryConfig extends GuiScreen
@@ -39,14 +41,14 @@ public class GuiLLibraryConfig extends GuiScreen
         pickItem.mouseClickMove(mouseX, mouseY, lastButtonClicked, timeSinceMouseClick);
     }
 
-    protected void mouseClicked(int mouseX, int mouseY, int button)
+    protected void mouseClicked(int mouseX, int mouseY, int button) throws IOException
     {
         pickItem.mouseClicked(mouseX, mouseY, button);
     }
 
     protected void mouseMovedOrUp(int mouseX, int mouseY, int event)
     {
-        pickItem.mouseMovedOrUp(mouseX, mouseY, event);
+        pickItem.mouseMovedOrUp(mouseX, mouseY);
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks)

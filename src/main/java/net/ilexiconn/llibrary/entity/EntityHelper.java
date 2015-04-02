@@ -1,7 +1,6 @@
 package net.ilexiconn.llibrary.entity;
 
 import com.google.common.collect.Lists;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import net.ilexiconn.llibrary.LLibrary;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
@@ -9,6 +8,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -75,7 +75,7 @@ public class EntityHelper
     {
         int entityId = getUniqueEntityId();
         EntityRegistry.registerModEntity(entityClass, entityName, entityId, LLibrary.instance, 64, 1, true);
-        EntityList.IDtoClassMapping.put(entityId, entityClass);
+        EntityList.idToClassMapping.put(entityId, entityClass);
         EntityList.entityEggs.put(entityId, new EntityList.EntityEggInfo(entityId, primaryColor, secondaryColor));
     }
 
@@ -88,10 +88,10 @@ public class EntityHelper
         {
             if (biome != null)
             {
-                EntityRegistry.removeSpawn(clazz, EnumCreatureType.ambient, biome);
-                EntityRegistry.removeSpawn(clazz, EnumCreatureType.creature, biome);
-                EntityRegistry.removeSpawn(clazz, EnumCreatureType.monster, biome);
-                EntityRegistry.removeSpawn(clazz, EnumCreatureType.waterCreature, biome);
+                EntityRegistry.removeSpawn(clazz, EnumCreatureType.AMBIENT, biome);
+                EntityRegistry.removeSpawn(clazz, EnumCreatureType.CREATURE, biome);
+                EntityRegistry.removeSpawn(clazz, EnumCreatureType.MONSTER, biome);
+                EntityRegistry.removeSpawn(clazz, EnumCreatureType.WATER_CREATURE, biome);
             }
         }
     }
@@ -100,7 +100,7 @@ public class EntityHelper
     {
         removedEntities.add(clazz);
 
-        EntityList.IDtoClassMapping.remove(clazz);
+        EntityList.idToClassMapping.remove(clazz);
 
         Object name = EntityList.classToStringMapping.get(clazz);
 

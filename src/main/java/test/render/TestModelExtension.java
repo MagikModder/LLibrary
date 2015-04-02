@@ -4,7 +4,10 @@ import net.ilexiconn.llibrary.client.render.IModelExtension;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class TestModelExtension implements IModelExtension
 {
     public void init(ModelBase model)

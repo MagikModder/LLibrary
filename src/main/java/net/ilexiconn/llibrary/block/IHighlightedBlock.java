@@ -1,10 +1,11 @@
 package net.ilexiconn.llibrary.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -16,5 +17,5 @@ import java.util.List;
 public interface IHighlightedBlock
 {
     @SideOnly(Side.CLIENT)
-    public List<AxisAlignedBB> getHighlightedBoxes(World world, int x, int y, int z, EntityPlayer player);
+    List<AxisAlignedBB> getHighlightedBoxes(World world, BlockPos pos, EntityPlayer player);
 }

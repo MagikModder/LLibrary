@@ -93,9 +93,10 @@ public class WebHelper
     public static byte[] download(String rawURL) throws IOException
     {
         URL url = new URL(rawURL);
-        try (InputStream in = url.openStream(); ByteArrayOutputStream baos = new ByteArrayOutputStream())
+        try
         {
-            byte[] buffer = new byte[4096]; // We create a 4kb buffer to download the file
+            InputStream in = url.openStream(); ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[4096];
             int i;
             while ((i = in.read(buffer)) != -1)
             {
@@ -103,6 +104,11 @@ public class WebHelper
             }
             baos.flush();
             return baos.toByteArray();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
         }
     }
 }

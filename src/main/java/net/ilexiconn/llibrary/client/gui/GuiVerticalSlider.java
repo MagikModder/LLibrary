@@ -1,11 +1,13 @@
 package net.ilexiconn.llibrary.client.gui;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
+
+import java.io.IOException;
 
 /**
  * @author FiskFille
@@ -41,7 +43,7 @@ public class GuiVerticalSlider extends GuiScreen
         }
     }
 
-    protected void mouseClicked(int mouseX, int mouseY, int button)
+    protected void mouseClicked(int mouseX, int mouseY, int button) throws IOException
     {
         super.mouseClicked(mouseX, mouseY, button);
 
@@ -51,9 +53,8 @@ public class GuiVerticalSlider extends GuiScreen
         }
     }
 
-    protected void mouseMovedOrUp(int mouseX, int mouseY, int event)
+    protected void mouseMovedOrUp(int mouseX, int mouseY)
     {
-        super.mouseMovedOrUp(mouseX, mouseY, event);
         dragging = mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
     }
 

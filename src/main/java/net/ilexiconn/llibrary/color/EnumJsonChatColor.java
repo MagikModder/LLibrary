@@ -1,6 +1,6 @@
 package net.ilexiconn.llibrary.color;
 
-public enum EnumChatColor
+public enum EnumJsonChatColor
 {
     BLACK("black"),
     DARK_BLUE("dark_blue"),
@@ -20,7 +20,7 @@ public enum EnumChatColor
 
     public String colorCode;
 
-    private EnumChatColor(String c)
+    private EnumJsonChatColor(String c)
     {
         colorCode = c;
     }
